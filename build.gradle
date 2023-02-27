@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.8-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.softura'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation ('org.kie:kie-spring:7.73.0.Final'){
+		exclude group:'org.springframework', module: 'spring-core'
+		exclude group:'org.springframework', module: 'spring-tx'
+		exclude group:'org.springframework', module: 'spring-beans'
+		exclude group:'org.springframework', module: 'spring-context'
+	}
+	implementation 'org.drools:drools-compiler:7.73.0.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-aop:3.0.2'
+	implementation 'org.json:json:20220924'
+	implementation 'javassist:javassist:3.12.1.GA'
+	implementation 'net.bytebuddy:byte-buddy-agent:1.12.22'
+	implementation 'org.example:sample-dateUtil-lib:2.0'
+	runtimeOnly 'com.h2database:h2:2.1.214'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'junit:junit:4.13.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

@@ -1,0 +1,14 @@
+import java.time.DayOfWeek;
+import com.softura.skillup.entity.ScheduleDayRequest;
+global com.softura.skillup.entity.ScheduleDayResponse startScheduleTimeEpoch;
+
+
+dialect "mvel"
+
+rule "Scheduled Day "
+    when
+        ScheduleDayRequest(scheduleDay.name.contains(dayId))
+    then
+        startScheduleTimeEpoch.setStartScheduleTimeEpoch(startScheduleTimeEpoch.getStartScheduleTimeEpoch());
+end
+

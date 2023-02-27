@@ -31,7 +31,6 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return buildErrorResponse(exception, HttpStatus.NOT_FOUND, request, errorCode);
     }
 
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers,
